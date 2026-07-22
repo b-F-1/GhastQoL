@@ -3,7 +3,7 @@ version: 1.0.0
 main: com.example.ghastqol.GhastQoLPlugin
 api-version: '26.1'
 folia-supported: false
-author: YourName
+author: b-F-1, with help from Claude.
 description: 'Quality-of-life tweaks for happy ghasts: faster flight and follow-the-player.'
 
 commands:

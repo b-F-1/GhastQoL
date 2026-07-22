@@ -1,11 +1,12 @@
 # How much faster happy ghasts should fly.
 # 1.0 = vanilla speed, 2.0 = twice as fast, 3.0 = three times as fast, etc.
 # The vanilla flying_speed base value is ~0.05, so 3.0 makes it ~0.15.
+# 3.0 is recommended, note, this makes happy ghasts slightly faster than Elytra.
 speed-multiplier: 3.0
 
 # If true, the boost only applies while a player is riding the ghast,
 # and is removed when they dismount. If false, all happy ghasts are always fast.
-only-when-ridden: false
+only-when-ridden: true
 
 # Make happy ghasts follow a player, but stay tethered to their home area.
 # A ghast's "home" is where it's resting (set when it loads and re-set when a rider
@@ -20,7 +21,7 @@ follow:
   speed: 1.0           # glide speed multiplier (raise if it feels lazy)
   trigger: look        # 'look' = follow while a player looks at it; 'timer' = follow/rest cycle
   # --- used when trigger: look ---
-  look-angle: 35.0            # width of the "looking at it" cone, in degrees
+  look-angle: 15.0            # width of the "looking at it" cone, in degrees
   require-line-of-sight: true # ignore looks that are blocked by blocks
   look-linger-seconds: 2      # keep following this long after they last looked (avoids twitchiness)
   # --- used when trigger: timer ---
