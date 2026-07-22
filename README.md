@@ -1,6 +1,6 @@
 # GhastQoL
 
-A Paper plugin for Minecraft **26.2** with quality-of-life tweaks for happy ghasts:
+A Paper plugin for Minecraft **26.X** with quality-of-life tweaks for happy ghasts:
 they fly faster (a boost to their `flying_speed` attribute) and, fly to a player when
 looking at them. Also adds a rotate lock to make building around Ghasts easier.
 
