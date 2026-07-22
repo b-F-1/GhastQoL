@@ -1,0 +1,34 @@
+# How much faster happy ghasts should fly.
+# 1.0 = vanilla speed, 2.0 = twice as fast, 3.0 = three times as fast, etc.
+# The vanilla flying_speed base value is ~0.05, so 3.0 makes it ~0.15.
+speed-multiplier: 3.0
+
+# If true, the boost only applies while a player is riding the ghast,
+# and is removed when they dismount. If false, all happy ghasts are always fast.
+only-when-ridden: false
+
+# Make happy ghasts follow a player, but stay tethered to their home area.
+# A ghast's "home" is where it's resting (set when it loads and re-set when a rider
+# dismounts, mirroring vanilla). It only follows players inside its home range and
+# won't chase them beyond it. By default it follows whoever is LOOKING at it
+# (trigger: look); set trigger: timer for a follow/rest cycle instead. Implemented as an
+# AI goal that cleanly overrides vanilla wander. (A ridden ghast is left to its rider.)
+follow:
+  enabled: true
+  range: 32.0          # home range: follows players within this far of home, and stays within it
+  stop-distance: 4.0   # stop approaching once this close, so it hovers nearby
+  speed: 1.0           # glide speed multiplier (raise if it feels lazy)
+  trigger: look        # 'look' = follow while a player looks at it; 'timer' = follow/rest cycle
+  # --- used when trigger: look ---
+  look-angle: 35.0            # width of the "looking at it" cone, in degrees
+  require-line-of-sight: true # ignore looks that are blocked by blocks
+  look-linger-seconds: 2      # keep following this long after they last looked (avoids twitchiness)
+  # --- used when trigger: timer ---
+  follow-seconds: 10   # how long it chases the player each cycle
+  rest-seconds: 10     # how long it flies normally between chases (0 = always follow)
+
+# '/ghastqol rotate' snaps the happy ghast you're riding (or the nearest one) to
+# yaw 0 so it lines up with the block grid.
+rotate:
+  range: 8.0         # how far to look for a ghast when you aren't riding one
+  hold-seconds: 5    # after aligning, pause follow this long so it stays put (0 = don't pause)
