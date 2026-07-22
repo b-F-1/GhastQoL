@@ -1,11 +1,11 @@
 # GhastQoL
 
-A tiny Paper plugin for Minecraft **26.2** with quality-of-life tweaks for happy ghasts:
-they fly faster (a boost to their `flying_speed` attribute) and, when unridden, drift
-toward the nearest player instead of wandering off.
+A Paper plugin for Minecraft **26.2** with quality-of-life tweaks for happy ghasts:
+they fly faster (a boost to their `flying_speed` attribute) and, fly to a player when
+looking at them. Also adds a rotate lock to make building around Ghasts easier.
 
 ## Requirements
-- Paper **26.1+** (Paper forks like Purpur/Pufferfish work too)
+- Paper **26.X** (Paper forks like Purpur/Pufferfish work too)
 - **JDK 25** (required to build for Minecraft 26.x)
 
 Not supported: Spigot/Bukkit (uses Paper-only APIs), Forge/Fabric (different platform),
@@ -27,20 +27,14 @@ mvn package
 The jar lands in `target/ghastqol-1.0.0.jar`. (Maven uses whatever JDK is on
 your `JAVA_HOME`/`PATH`, so make sure that's JDK 25.)
 
-### Gradle
-```bash
-gradle wrapper     # first time only; or just open the folder in IntelliJ IDEA
-./gradlew build    # on Windows: gradlew build
-```
-The jar lands in `build/libs/GhastQoL-1.0.0.jar`. Gradle will auto-download
-JDK 25 for the build via its toolchain, so you don't have to install it yourself.
+The jar lands in `build/libs/GhastQoL-1.0.0.jar`. 
 
 Drop the finished jar in your server's `plugins/` folder and restart.
 
 ## Config (`plugins/GhastQoL/config.yml`)
 ```yaml
 speed-multiplier: 3.0     # 3x vanilla flight speed
-only-when-ridden: false   # true = only boost while a player is riding
+only-when-ridden: true   # true = only boost while a player is riding
 
 follow:                   # make unridden ghasts follow the nearest player
   enabled: true
@@ -85,9 +79,9 @@ Reload after editing with `/ghastqol reload` (permission `ghastqol.reload`, defa
   sitting still, or hop off first.
 
 ## How it works
-Vanilla happy ghasts have a `flying_speed` base of ~0.05, which feels sluggish.
-The plugin adds a scalar attribute modifier so the effective speed becomes
-`base × speed-multiplier`. The modifier is applied when a ghast enters the world
+Vanilla happy ghasts have a `flying_speed` base of ~0.05, represented as 1.0 in the config,
+which feels sluggish. The plugin adds a scalar attribute modifier so the effective speed
+becomes `base × speed-multiplier`. The modifier is applied when a ghast enters the world
 (spawn or chunk load) and is cleanly removed if you disable/remove the plugin.
 
 ## Notes
